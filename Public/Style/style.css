@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100..900&family=Poppins:wght@100..900&family=Roboto:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#Inicio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 390px; 
+    padding: 80px;
+  }
+  
+  .img-inicio img {
+    width: 360px;
+  }
+  
+  .info-inicio {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  .titulo p {
+    color: #081F5C;
+    font-size: 40px;
+    font-weight: 700;
+  }
+  
+  .pata-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  
+  .subtitulo p {
+    color: #081e5c7e;
+    font-size: 20px;
+  }
+  
+  .button-Cadastrar {
+    background-color: #081F5C;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  #login_a {
+    text-decoration: none;
+  }
+  
+
+  /* Sobre */
+  #Sobre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 80px;
+    background-color: #a3c9f1;
+    flex-direction: row-reverse; 
+  }
+  
+  
+  .img-sobre img {
+    width: 360px;
+  }
+  
+  .info-sobre {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .info-sobre .titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .info-sobre .titulo p {
+    color: #081F5C;
+    font-size: 40px;
+    font-weight: 700;
+  }
+  
+  .info-sobre .subtitulo p {
+    color: #081e5c7e;
+    font-size: 20px;
+  }
+  
+
