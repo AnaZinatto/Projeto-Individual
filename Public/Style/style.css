@@ -69,7 +69,7 @@
     justify-content: center;
     gap: 50px;
     padding: 80px;
-    background-color: #a3c9f1;
+    background-color: #F7F5F0;
     flex-direction: row-reverse; 
   }
   
@@ -192,12 +192,10 @@
 
 }
 
- #SobreMim .containe-conteudo h1{
+#SobreMim .containe-conteudo h1{
 color: #081F5C;
-font-size: 30px;
-
-
- }
+font-size: 50px;
+}
 
  #SobreMim .containe-conteudo p{
   text-align: center;
@@ -218,6 +216,43 @@ font-size: 30px;
   flex-basis: 40%;
   position: relative;
 margin-right: 400px;
+}
+
+.teste2 p{
+margin-top: 20px;
+}
+
+/* Formulario */
+
+#formulario .container-formulario{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  flex-direction: row;
+}
+
+#formulario .container-formulario .card-form h2{
+color: #081F5C;
+text-align: center;
+margin: 30px;
+
+}
+
+#formulario .container-formulario  img{
+  width: 40%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  display: flex;
+  justify-content: start;
+}
+
+#formulario h1{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: #334EAC;
+  margin-top: 100px ;
+  text-align: center;
 }
 
 
