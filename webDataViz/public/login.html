@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar</title>
+  <link rel="stylesheet" href="Style/style-heade.css" />
+  <link rel="stylesheet" href="Style/login-style.css" />
+</head>
+
+<body>
+
+  <header>
+    <img src="Assests/icon/logo.png" alt="Logo da empresa" height="90px" />
+    <nav class="header_nav">
+      <ul>
+        <li><a href="./index.html">Início</a></li>
+        <li><a href="#Sobre">Sobre</a></li>
+        <li><a href="#Dogs">Dogs</a></li>
+        <li><a href="#SobreMim">Sobre mim</a></li>
+        <li><a href="#formulario">Formulário</a></li>
+        <li><a class="button-Cadastrar" id="login_a" href="./login.html">Registrar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="login">
+    <div class="containe-login">
+      <div class="card-login">
+        <img src="Assests/icon/logo.png" alt="Logo do formulário" />
+        <h1>Registre-se</h1>
+        <input type="text" id="input_nome" placeholder="Nome" />
+        <input type="text" id="input_email" placeholder="E-mail" />
+        <input type="text" id="input_endereco" placeholder="Endereço" />
+        <button onclick="cadastrar()">Cadastrar</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function cadastrar() {
+      var nome = input_nome.value;
+      var email = input_email.value;
+      var endereco = input_endereco.value;
+
+
+      if (email == "" || nome == "" || endereco == "") {
+        alert("Por favor, preencha todos os campos!");
+      } else if (email.indexOf("@") == -1) { //Se dentro do email ele passar pelos caracteres e não achar arroba ele retorna -1 que é porque não existe no e-mail. 
+        alert("O e-mail precisa conter '@'.");
+      } else {
+        fetch("/empresa/cadastrar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", },
+          body: JSON.stringify({
+            nomeServer: nome,
+            emailServer: email,
+            enderecoServer: endereco
+          }),
+        }).then(function (resposta) {
+          if (resposta.ok) {
+            window.location.href = "formuláro.html";
+            alert("Cadastro efetuado com sucesso!");
+          }
+
+        }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+      }
+
+
+    }
+  </script>
+
+</body>
+
+</html>
