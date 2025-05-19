@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="Style/style-heade.css">
     <link rel="stylesheet" href="Style/forms-style.css">
 </head>
+
 <body>
     <header>
         <img src="Assests/icon/logo.png" alt="Imagem logo" height="90px">
@@ -14,7 +16,7 @@
             <ul>
                 <li><a href="./index.html">Início</a></li>
                 <li><a href="#Sobre">Sobre</a></li>
-                <li><a href="#Dogs">Dogs</a></li> 
+                <li><a href="#Dogs">Dogs</a></li>
                 <li><a href="#SobreMim">Sobre mim</a></li>
                 <li><a href="#formulario">Formulário</a></li>
                 <li><a class="button-Cadastrar" id="login_a" href="./login.html">Registrar</a></li>
@@ -27,18 +29,164 @@
         <p>Vote em qual cachorro você tem:</p>
         <form>
             <ul>
-                <li><label><input type="radio" name="dog" value="Shih Tzu"> Shih Tzu</label></li>
-                <li><label><input type="radio" name="dog" value="Golden"> Golden</label></li>
-                <li><label><input type="radio" name="dog" value="Vira Lata"> Vira Lata</label></li>
-                <li><label><input type="radio" name="dog" value="Yorkshire"> Yorkshire</label></li>
-                <li><label><input type="radio" name="dog" value="Pastor Alemão"> Pastor Alemão</label></li>
-                <li><label><input type="radio" name="dog" value="Outro"> Outro</label></li>
-                <li><label><input type="radio" name="dog" value="Nenhum"> Não tenho cachorro</label></li>
+                <li><label><input type="radio" name="dog" for="input_shihtzu"> Shih Tzu</label></li>
+                <li><label><input type="radio" name="dog" for="input_golden"> Golden</label></li>
+                <li><label><input type="radio" name="dog" for="input_viraLata"> Vira Lata</label></li>
+                <li><label><input type="radio" name="dog" for="input_yorkshire"> Yorkshire</label></li>
+                <li><label><input type="radio" name="dog" for="input_pastorAlemão"> Pastor Alemão</label></li>
+                <li><label><input type="radio" name="dog" for="input_outro"> Outro</label></li>
+                <li><label><input type="radio" name="dog" for="input_nenhum"> Não tenho cachorro</label></li>
             </ul>
 
-            <button onclick="window.location.href='./sorteio.html'" >Confirmar voto</button>
+            <button onclick="votacao()">Confirmar voto</button>
         </form>
     </div>
 </body>
+
 </html>
 
+<script>
+    function votacao(shihtzu, golden, viraLata, yorkshire, pastorAlemao, outro, nenhum, idUsuario) {
+
+        if (input_shihtzu.checked === false && input_golden.checked === false && input_viraLata.checked === false && input_yorkshire.checked === false
+            && input_pastorAlemão.checked === false && input_outro.checked === false && input_nenhum.checked === false) {
+
+            alert("Mensagem de erro para todos os campos em branco");
+
+            return false;
+        }
+        else {
+
+            // shihtzu
+            if (input_shihtzu.checked === true) {
+
+                shihtzu = true
+
+            } else if (input_shihtzu.checked === false) {
+
+                shihtzu = false
+            }
+            // golden
+            if (input_golden.checked === true) {
+
+                golden = true
+
+
+            } else if (input_golden.checked === false) {
+
+                golden = false
+
+            }
+
+            // vira lata
+            if (input_viraLata.checked === true) {
+
+                viraLata = true
+
+
+            } else if (input_viraLata.checked === false) {
+
+                viraLata = false
+
+            }
+
+            // yorkshire
+
+            if (input_yorkshire.checked === true) {
+
+                yorkshire = true
+
+
+            } else if (input_yorkshire.checked === false) {
+
+                yorkshire = false
+
+            }
+
+               // pastor alemao
+
+            if (input_pastorAlemão.checked=== true) {
+
+                pastorAlemao = true
+
+
+            } else if (input_pastorAlemão.checked=== false) {
+
+                pastorAlemao = false
+
+            }
+
+
+                 // outro
+
+            if (input_outro.checked=== true) {
+
+                outro = true
+
+
+            } else if (input_outro.checked=== false) {
+
+                outro = false
+
+            }
+
+
+                    // nenhum
+
+            if (input_nenhum.checked== true) {
+
+                nenhum = true
+
+
+            } else if (input_nenhum.checked== false) {
+
+                nenhum = false
+
+            }
+
+            idUsuario = id
+
+            // card_votacaoFinalizada.style.display = 'block'
+            // card_votacao.style.display = 'none'
+
+            setInterval(5000)
+        }
+
+        fetch("/usuarios/votacao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+
+                idUsuarioServer: idUsuario,
+                shihtzuServer: shihtzu,
+                goldenServer: golden,
+                viraLataServer: viraLata,
+                yorkshireServer: yorkshire,
+                pastorAlemaoServer: pastorAlemao,
+                outroServer: outro,
+                nenhumServer: nenhum
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                window.location.href = "./sorteio.html";
+
+                alert("Votação feita com sucesso!");
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+
+    }
+</script>
