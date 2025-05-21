@@ -1,4 +1,21 @@
-var usuarioModel = require("../models/votacaoModel");
+var votacaoModel = require("../models/votacaoModel");
+
+function listar(req, res) {
+    votacaoModel.listar()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 
 function votacao(req, res) {
@@ -20,7 +37,7 @@ function votacao(req, res) {
         res.status(400).send("Selecione uma opção");
     } else {
 
-        usuarioModel.votacao(shihtzu, golden, viraLata, yorkshire, pastorAlemao, outro, nenhum, idUsuario)
+        votacaoModel.votacao(shihtzu, golden, viraLata, yorkshire, pastorAlemao, outro, nenhum, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -36,4 +53,9 @@ function votacao(req, res) {
                 }
             );
     }
+}
+
+module.exports = {
+    listar,
+    votacao
 }

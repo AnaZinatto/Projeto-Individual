@@ -29,16 +29,17 @@
         <p>Vote em qual cachorro você tem:</p>
         <form>
             <ul>
-                <li><label><input type="radio" name="dog" for="input_shihtzu"> Shih Tzu</label></li>
-                <li><label><input type="radio" name="dog" for="input_golden"> Golden</label></li>
-                <li><label><input type="radio" name="dog" for="input_viraLata"> Vira Lata</label></li>
-                <li><label><input type="radio" name="dog" for="input_yorkshire"> Yorkshire</label></li>
-                <li><label><input type="radio" name="dog" for="input_pastorAlemão"> Pastor Alemão</label></li>
-                <li><label><input type="radio" name="dog" for="input_outro"> Outro</label></li>
-                <li><label><input type="radio" name="dog" for="input_nenhum"> Não tenho cachorro</label></li>
+                <li><label><input type="radio" name="dog" id="input_shihtzu"> Shih Tzu</label></li>
+                <li><label><input type="radio" name="dog" id="input_golden"> Golden</label></li>
+                <li><label><input type="radio" name="dog" id="input_viraLata"> Vira Lata</label></li>
+                <li><label><input type="radio" name="dog" id="input_yorkshire"> Yorkshire</label></li>
+                <li><label><input type="radio" name="dog" id="input_pastorAlemao"> Pastor Alemão</label></li>
+                <li><label><input type="radio" name="dog" id="input_outro"> Outro</label></li>
+                <li><label><input type="radio" name="dog" id="input_nenhum"> Não tenho cachorro</label></li>
+
             </ul>
 
-            <button onclick="votacao()">Confirmar voto</button>
+            <button type="button" onclick="votacao()">Confirmar voto</button>
         </form>
     </div>
 </body>
@@ -46,119 +47,77 @@
 </html>
 
 <script>
-    function votacao(shihtzu, golden, viraLata, yorkshire, pastorAlemao, outro, nenhum, idUsuario) {
 
-        if (input_shihtzu.checked === false && input_golden.checked === false && input_viraLata.checked === false && input_yorkshire.checked === false
-            && input_pastorAlemão.checked === false && input_outro.checked === false && input_nenhum.checked === false) {
+    var id = 1
 
-            alert("Mensagem de erro para todos os campos em branco");
+    function votacao() {
+        var shihtzu = input_shihtzu.checked
+        var golden = input_golden.checked
+        var viraLata = input_viraLata.checked
+        var yorkshire = input_yorkshire.checked
+        var pastorAlemao = input_pastorAlemao.checked
+        var outro = input_outro.checked
+        var nenhum = input_nenhum.checked
+
+        if(shihtzu=== false && golden === false && viraLata === false && yorkshire === false 
+        && pastorAlemao === false && outro === false && nenhum === false){
+
+            alert ('Insira uma alternativa !')
 
             return false;
         }
+
+
         else {
-
-            // shihtzu
-            if (input_shihtzu.checked === true) {
-
-                shihtzu = true
-
-            } else if (input_shihtzu.checked === false) {
-
+            if (shihtzu == true){
+                shihtzu = true 
+            } else if (shihtzu== false){
                 shihtzu = false
             }
-            // golden
-            if (input_golden.checked === true) {
-
-                golden = true
-
-
-            } else if (input_golden.checked === false) {
-
+              if (golden == true){
+                golden = true 
+            } else if (golden == false){
                 golden = false
-
             }
-
-            // vira lata
-            if (input_viraLata.checked === true) {
-
-                viraLata = true
-
-
-            } else if (input_viraLata.checked === false) {
-
+              if (viraLata == true){
+                viraLata = true 
+            } else if (viraLata == false){
                 viraLata = false
-
             }
-
-            // yorkshire
-
-            if (input_yorkshire.checked === true) {
-
-                yorkshire = true
-
-
-            } else if (input_yorkshire.checked === false) {
-
+              if (yorkshire == true){
+                yorkshire = true 
+            } else if (yorkshire == false){
                 yorkshire = false
-
             }
-
-               // pastor alemao
-
-            if (input_pastorAlemão.checked=== true) {
-
-                pastorAlemao = true
-
-
-            } else if (input_pastorAlemão.checked=== false) {
-
+              if (pastorAlemao == true){
+                pastorAlemao = true 
+            } else if (pastorAlemao == false){
                 pastorAlemao = false
-
             }
-
-
-                 // outro
-
-            if (input_outro.checked=== true) {
-
-                outro = true
-
-
-            } else if (input_outro.checked=== false) {
-
+              if (outro == true){
+                outro = true 
+            } else if (outro == false){
                 outro = false
-
             }
-
-
-                    // nenhum
-
-            if (input_nenhum.checked== true) {
-
-                nenhum = true
-
-
-            } else if (input_nenhum.checked== false) {
-
+              if (nenhum == true){
+                nenhum = true 
+            } else if (nenhum == false){
                 nenhum = false
-
             }
 
-            idUsuario = id
-
-            // card_votacaoFinalizada.style.display = 'block'
-            // card_votacao.style.display = 'none'
-
-            setInterval(5000)
         }
+        
+      var idUsuario = localStorage.getItem("idUsuario");
 
-        fetch("/usuarios/votacao", {
+
+
+        fetch("/votacao/votacao", {
+
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-
                 idUsuarioServer: idUsuario,
                 shihtzuServer: shihtzu,
                 goldenServer: golden,
@@ -167,26 +126,22 @@
                 pastorAlemaoServer: pastorAlemao,
                 outroServer: outro,
                 nenhumServer: nenhum
-
+                
             })
         }).then(function (resposta) {
-
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-
-                window.location.href = "./sorteio.html";
-
                 alert("Votação feita com sucesso!");
-
+                window.location.href = "./sorteio.html";
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
             }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+        }).catch(function (erro) {
+            console.log(`#ERRO: ${erro}`);
         });
 
         return false;
-
     }
+
 </script>

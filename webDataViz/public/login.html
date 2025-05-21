@@ -39,6 +39,7 @@
   </section>
 
   <script>
+    var id = 0
     function cadastrar() {
       var nome = input_nome.value;
       var email = input_email.value;
@@ -50,6 +51,7 @@
       } else if (email.indexOf("@") == -1) { //Se dentro do email ele passar pelos caracteres e não achar arroba ele retorna -1 que é porque não existe no e-mail. 
         alert("O e-mail precisa conter '@'.");
       } else {
+        
         fetch("/empresa/cadastrar", {
           method: "POST",
           headers: { "Content-Type": "application/json", },
@@ -58,10 +60,18 @@
             emailServer: email,
             enderecoServer: endereco
           }),
+
+
         }).then(function (resposta) {
           if (resposta.ok) {
-            window.location.href = "./formulário.html";
-            alert("Cadastro efetuado com sucesso!");
+            resposta.json().then(json => {
+              localStorage.setItem("idUsuario", json.idUsuario)
+              alert("Cadastro efetuado com sucesso! Vamos para o formulário");
+
+              window.location.href = "./formulário.html";
+            })
+          } else {
+            alert('Houve um erro ao tentar realizar o cadastro')
           }
 
         }).catch(function (resposta) {

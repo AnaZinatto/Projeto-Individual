@@ -42,7 +42,7 @@ function cadastrar(req, res) {
         empresaModel.registrar(nome, email, endereco)
             .then(
                 function (result) {
-                    res.json(result);
+                    res.json({idUsuario: result.insertId});
                 }
             ).catch(
                 function (erro) {
