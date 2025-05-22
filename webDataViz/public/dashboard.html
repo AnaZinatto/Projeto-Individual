@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/style-heade.css">
+    <link rel="stylesheet" href="Style/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Resultado da Votação</title>
+    <style>
+        h1 {
+            color: #0D349A;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container-graficos {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px auto;
+        }
+
+        .grafico,
+        .grafico2 {
+            width: 600px;
+            height: 500px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .grafico {
+            background-color: #081F5C;
+        }
+
+        .grafico2 {
+            background-color: #F7F5F0;
+        }
+
+        .grafico canvas,
+        .grafico2 canvas {
+            max-width: 500px;
+            max-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="Assests/icon/logo.png" alt="Imagem logo" height="90px">
+        <nav class="header_nav">
+            <ul>
+                <li><a href="./index.html">Início</a></li>
+                <li><a href="#Sobre">Sobre</a></li>
+                <li><a href="#Dogs">Dogs</a></li>
+                <li><a href="#SobreMim">Sobre mim</a></li>
+                <li><a href="#formulario">Formulário</a></li>
+                <li><a class="button-Cadastrar" id="login_a" href="./cadastro.html">Cadastrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Resultado da Votação</h1>
+
+    <div class="container-graficos">
+        <div class="grafico">
+            <canvas id="graficoQuantidade"></canvas>
+        </div>
+
+        <div class="grafico2">
+            <canvas id="graficoPossuiCachorro"></canvas>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        const dogs = ['Shihtzu', 'Golden', 'Vira-Lata', 'YorkShire', 'Pastor Alemão', 'Outro', 'Nenhum'];
+
+        const ctxDog = document.getElementById('graficoQuantidade').getContext('2d');
+        new Chart(ctxDog, {
+            type: 'bar',
+            data: {
+                labels: dogs,
+                datasets: [{
+                    label: 'Quantidade de Cachorros',
+                    data: [20, 40, 10, 34, 10, 10, 13],
+                    backgroundColor: '#FFFFFF',
+                    barThickness: 30
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: 50,
+                        ticks: {
+                            color: '#FFFFFF'
+                        },
+                        grid: {
+                            color: 'rgba(255,255,255,0.2)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#FFFFFF'
+                        },
+                        grid: {
+                            color: 'rgba(255,255,255,0.2)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#FFFFFF'
+                        }
+                    }
+                }
+            }
+        });
+
+        const ctxPossui = document.getElementById('graficoPossuiCachorro').getContext('2d');
+
+        new Chart(ctxPossui, {
+            type: 'pie',
+            data: {
+                labels: ['Possuem Cachorro', 'Não Possuem Cachorro'],
+                datasets: [{
+                    label: 'Possuem Cachorro ou Não',
+                    data: [80, 20],
+                    backgroundColor: ['#081F5C', '#D0E3FF'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'black'
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

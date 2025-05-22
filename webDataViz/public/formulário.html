@@ -19,7 +19,7 @@
                 <li><a href="#Dogs">Dogs</a></li>
                 <li><a href="#SobreMim">Sobre mim</a></li>
                 <li><a href="#formulario">Formulário</a></li>
-                <li><a class="button-Cadastrar" id="login_a" href="./login.html">Registrar</a></li>
+                <li><a class="button-Cadastrar" id="login_a" href="./cadastro.html">Cadastrar</a></li>
             </ul>
         </nav>
     </header>
@@ -48,7 +48,8 @@
 
 <script>
 
-    var id = 1
+    var fkUsuario = sessionStorage.ID_USUARIO
+
 
     function votacao() {
         var shihtzu = input_shihtzu.checked
@@ -107,7 +108,10 @@
 
         }
         
-      var idUsuario = localStorage.getItem("idUsuario");
+
+
+
+    //   var idUsuario = localStorage.getItem("idUsuario");
 
 
 
@@ -118,7 +122,7 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                idUsuarioServer: idUsuario,
+                fkUsuarioServer: fkUsuario,
                 shihtzuServer: shihtzu,
                 goldenServer: golden,
                 viraLataServer: viraLata,

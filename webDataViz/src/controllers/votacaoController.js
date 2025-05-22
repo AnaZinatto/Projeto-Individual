@@ -20,7 +20,7 @@ function listar(req, res) {
 
 function votacao(req, res) {
 
-    var idUsuario = req.body.idUsuarioServer;
+    var fkUsuario = req.body.fkUsuarioServer;
     var shihtzu = req.body.shihtzuServer;
     var golden = req.body.goldenServer;
     var viraLata = req.body.viraLataServer
@@ -37,7 +37,7 @@ function votacao(req, res) {
         res.status(400).send("Selecione uma opção");
     } else {
 
-        votacaoModel.votacao(shihtzu, golden, viraLata, yorkshire, pastorAlemao, outro, nenhum, idUsuario)
+        votacaoModel.votacao(shihtzu, golden, viraLata, yorkshire, pastorAlemao, outro, nenhum, fkUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);

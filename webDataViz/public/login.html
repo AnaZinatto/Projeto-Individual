@@ -20,7 +20,7 @@
         <li><a href="#Dogs">Dogs</a></li>
         <li><a href="#SobreMim">Sobre mim</a></li>
         <li><a href="#formulario">Formulário</a></li>
-        <li><a class="button-Cadastrar" id="login_a" href="./login.html">Registrar</a></li>
+        <li><a class="button-Cadastrar" id="login_a" href="./cadastro.html">Cadastrar</a></li>
       </ul>
     </nav>
   </header>
@@ -30,59 +30,55 @@
       <div class="card-login">
         <img src="Assests/icon/logo.png" alt="Logo do formulário" />
         <h1>Registre-se</h1>
-        <input type="text" id="input_nome" placeholder="Nome" />
         <input type="text" id="input_email" placeholder="E-mail" />
-        <input type="text" id="input_endereco" placeholder="Endereço" />
-        <button onclick="cadastrar()">Cadastrar</button>
+        <input type="password" id="input_senha" placeholder="Senha" />
+        <button onclick="entrar()">Entrar</button>
       </div>
     </div>
   </section>
 
   <script>
-    var id = 0
-    function cadastrar() {
-      var nome = input_nome.value;
-      var email = input_email.value;
-      var endereco = input_endereco.value;
+    function entrar() {
+      var email =input_email.value
+      var senha =input_senha.value
 
-
-      if (email == "" || nome == "" || endereco == "") {
+      if (email === "" || senha === "") {
         alert("Por favor, preencha todos os campos!");
-      } else if (email.indexOf("@") == -1) { //Se dentro do email ele passar pelos caracteres e não achar arroba ele retorna -1 que é porque não existe no e-mail. 
-        alert("O e-mail precisa conter '@'.");
-      } else {
-        
-        fetch("/empresa/cadastrar", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", },
-          body: JSON.stringify({
-            nomeServer: nome,
-            emailServer: email,
-            enderecoServer: endereco
-          }),
-
-
-        }).then(function (resposta) {
-          if (resposta.ok) {
-            resposta.json().then(json => {
-              localStorage.setItem("idUsuario", json.idUsuario)
-              alert("Cadastro efetuado com sucesso! Vamos para o formulário");
-
-              window.location.href = "./formulário.html";
-            })
-          } else {
-            alert('Houve um erro ao tentar realizar o cadastro')
-          }
-
-        }).catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
+        return;
       }
 
+      if (email.indexOf("@") === -1) {
+        alert("O e-mail precisa conter '@'.");
+        return;
+      }
 
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          emailServer: email,
+          senhaServer: senha
+        }),
+      })
+        .then(resposta => {
+          if (resposta.ok) {
+            return resposta.json();
+          } else {
+            throw new Error('Usuário ou senha inválidos.');
+          }
+        })
+        .then(json => {
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.idUsuario;
+
+          window.location.href = "./formulário.html";
+        })
+        .catch(erro => {
+          alert(erro.message);
+          console.error(erro);
+        });
     }
   </script>
-
 </body>
-
 </html>
