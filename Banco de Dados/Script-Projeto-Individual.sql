@@ -2,42 +2,51 @@ create database DogsWorld;
 
 use DogsWorld;
 
-
-create table sorteio (
-idSorteio int primary key auto_increment,
-bola int,
-tapete int,
-cama int,
-racao int,
-osso int,
-pote int
-);
-
-create table formulario (
-idVotacao int primary key auto_increment,
-shitzu int,
-golden int,
-viralata int,
-yorkshire int,
-pastorAlemao int,
-outro int,
-naoTem int,
-fkSorteio int,
-	constraint fkFormularioSorteio foreign key (fkSorteio) references sorteio (idSorteio)
-);
-
-
+-- Criando a tabela usuário
 create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar (45),
 email varchar (45),
-endereco varchar (100),
-fkFormulario int,
-	constraint fkFormularioUsuario foreign key (fkFormulario) references formulario (idVotacao)
-	
+senha varchar (45),
+endereco varchar (100)	
 );
 
+-- criando a tabela votação
+create table votacao (
+idVotacao int auto_increment,
+shitzu TINYINT,
+golden TINYINT,
+viralata TINYINT,
+yorkshire TINYINT,
+pastorAlemao TINYINT,
+outro TINYINT,
+naoTem TINYINT,
+fkUsuario int,
+	foreign key (fkUsuario) references usuario (idUsuario),
+    primary key (idVotacao, fkUsuario)
+);
+-- Criando a tabela sorteio
+create table sorteio (
+idSorteio int auto_increment,
+bola TINYINT,
+tapete TINYINT,
+cama TINYINT,
+racao TINYINT,
+osso TINYINT,
+pote TINYINT,
+fkUsuario int,
+	foreign key (fkUsuario) references usuario (idUsuario),
+    primary key (idSOrteio, fkUsuario)
+);
 
+-- select para saber as pssoas que votaram em determinados dogs
+select nome, email, endereco, shitzu, golden, viralata, yorkshire, pastorAlemao, outro, naoTem from usuario
+	join votacao
+		on fkUsuario = idUsuario;
+   
+-- selects
 select * from usuario;
-select * from formulario;
+select * from votacao;
 select * from sorteio;
+
+
