@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="Style/style-heade.css">
     <link rel="stylesheet" href="Style/sorteio-style.css">
 </head>
+
 <body>
 
     <header>
@@ -15,7 +17,7 @@
             <ul>
                 <li><a href="./index.html">Início</a></li>
                 <li><a href="#Sobre">Sobre</a></li>
-                <li><a href="#Dogs">Dogs</a></li> 
+                <li><a href="#Dogs">Dogs</a></li>
                 <li><a href="#SobreMim">Sobre mim</a></li>
                 <li><a href="#formulario">Formulário</a></li>
                 <li><a class="button-Cadastrar" id="login_a" href="./cadastro.html">Cadastrar</a></li>
@@ -24,38 +26,78 @@
     </header>
 
 
-    
+
     <div class="container-sorteio">
         <h1>Obrigada pela votação, sorteie um brinde para o seu pet</h1>
-        <button onclick="sortear()">Sortear</button>
+        <button id="dbotaoSortear" onclick="sortear()">Sortear</button>
         <div id="mensagem"></div>
         <p>Consulte os resultados <a href="./dashboard.html">clicando aqui !</a></p>
     </div>
 </body>
+
 </html>
 
-<script >
+<script>
 
-function sortear(){
-    
-    var sortear = Math.random()
-     mensagem.innerHTML = ""
+        var fkUsuario = sessionStorage.ID_USUARIO
 
-     if (sortear <= 0.10) {
+function sortear() {
+    var sortear = Math.random();
+    mensagem.innerHTML = "";
+    var brinde = "";
+
+    if (sortear <= 0.10) {
         mensagem.innerHTML += `<img src="./Assests/img/bolinha.png" alt="Bolinha">`;
+        brinde = "Bolinha";
     } else if (sortear <= 0.20) {
         mensagem.innerHTML += `<img style="width: 300px;" src="./Assests/img/tapete.png" alt="Tapete">`;
+        brinde = 'Tapete';
     } else if (sortear <= 0.35) {
         mensagem.innerHTML += `<img style="width: 300px;" src="./Assests/img/cama.png" alt="Cama">`;
+        brinde = 'Cama';
     } else if (sortear <= 0.50) {
         mensagem.innerHTML += `<img style="width: 280px;" src="./Assests/img/ração.png" alt="Ração">`;
+        brinde = 'Ração';
     } else if (sortear <= 0.70) {
         mensagem.innerHTML += `<img style="width: 300px;" src="./Assests/img/coleira.png" alt="Coleira">`;
+        brinde = 'Coleira';
     } else if (sortear <= 0.80) {
         mensagem.innerHTML += `<img style="width: 300px;" src="./Assests/img/osso.png" alt="Osso">`;
+        brinde = 'Osso';
     } else {
         mensagem.innerHTML += `<img style="width: 300px;" src="./Assests/img/pote.png" alt="Pote">`;
+        brinde = 'Pote';
     }
 
+    fetch('sorteio/sorteio', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            fkUsuarioServer: fkUsuario,
+            brindeServer: brinde
+        })
+    }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            alert("Sorteio feito com sucesso!");
+
+            // Desabilita o botão após sortear
+            const botao = document.getElementById('botaoSortear');
+            botao.disabled = true;
+            botao.innerText = "Sorteio Realizado";
+
+        } else {
+            throw new Error("Houve um erro ao tentar realizar o sorteio!");
+        }
+    }).catch(function (erro) {
+        console.log(`#ERRO: ${erro}`);
+    });
+
+    return false;
 }
+
+
 </script>

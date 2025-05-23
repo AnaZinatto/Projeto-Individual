@@ -60,60 +60,53 @@
         var outro = input_outro.checked
         var nenhum = input_nenhum.checked
 
-        if(shihtzu=== false && golden === false && viraLata === false && yorkshire === false 
-        && pastorAlemao === false && outro === false && nenhum === false){
+        if (shihtzu === false && golden === false && viraLata === false && yorkshire === false
+            && pastorAlemao === false && outro === false && nenhum === false) {
 
-            alert ('Insira uma alternativa !')
+            alert('Insira uma alternativa !')
 
             return false;
         }
 
 
         else {
-            if (shihtzu == true){
-                shihtzu = true 
-            } else if (shihtzu== false){
+            if (shihtzu == true) {
+                shihtzu = true
+            } else if (shihtzu == false) {
                 shihtzu = false
             }
-              if (golden == true){
-                golden = true 
-            } else if (golden == false){
+            if (golden == true) {
+                golden = true
+            } else if (golden == false) {
                 golden = false
             }
-              if (viraLata == true){
-                viraLata = true 
-            } else if (viraLata == false){
+            if (viraLata == true) {
+                viraLata = true
+            } else if (viraLata == false) {
                 viraLata = false
             }
-              if (yorkshire == true){
-                yorkshire = true 
-            } else if (yorkshire == false){
+            if (yorkshire == true) {
+                yorkshire = true
+            } else if (yorkshire == false) {
                 yorkshire = false
             }
-              if (pastorAlemao == true){
-                pastorAlemao = true 
-            } else if (pastorAlemao == false){
+            if (pastorAlemao == true) {
+                pastorAlemao = true
+            } else if (pastorAlemao == false) {
                 pastorAlemao = false
             }
-              if (outro == true){
-                outro = true 
-            } else if (outro == false){
+            if (outro == true) {
+                outro = true
+            } else if (outro == false) {
                 outro = false
             }
-              if (nenhum == true){
-                nenhum = true 
-            } else if (nenhum == false){
+            if (nenhum == true) {
+                nenhum = true
+            } else if (nenhum == false) {
                 nenhum = false
             }
 
         }
-        
-
-
-
-    //   var idUsuario = localStorage.getItem("idUsuario");
-
-
 
         fetch("/votacao/votacao", {
 
@@ -130,7 +123,7 @@
                 pastorAlemaoServer: pastorAlemao,
                 outroServer: outro,
                 nenhumServer: nenhum
-                
+
             })
         }).then(function (resposta) {
             console.log("resposta: ", resposta);

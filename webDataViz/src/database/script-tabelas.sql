@@ -1,14 +1,8 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
 create database DogsWorld;
 
 use DogsWorld;
 
+-- Criando a tabela usuário
 create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar (45),
@@ -17,38 +11,39 @@ senha varchar (45),
 endereco varchar (100)	
 );
 
+-- criando a tabela votação
 create table votacao (
 idVotacao int auto_increment,
-shitzu int,
-golden int,
-viralata int,
-yorkshire int,
-pastorAlemao int,
-outro int,
-naoTem int,
+shitzu TINYINT,
+golden TINYINT,
+viralata TINYINT,
+yorkshire TINYINT,
+pastorAlemao TINYINT,
+outro TINYINT,
+naoTem TINYINT,
 fkUsuario int,
 	foreign key (fkUsuario) references usuario (idUsuario),
     primary key (idVotacao, fkUsuario)
 );
-
-select nome, email, endereco, shitzu, golden, viralata, yorkshire, pastorAlemao, outro, naoTem from usuario
-	join votacao
-		on fkUsuario = idUsuario;
-        
-
-
+-- Criando a tabela sorteio
 create table sorteio (
-idSorteio int primary key auto_increment,
-bola int,
-tapete int,
-cama int,
-racao int,
-osso int,
-pote int
+idSorteio int auto_increment,
+brinde varchar (45),
+fkUsuario int,
+	foreign key (fkUsuario) references usuario (idUsuario),
+    primary key (idSorteio, fkUsuario)
 );
-drop table sorteio;
 
-
+-- select para saber as pssoas que votaram em determinados dogs
+select u.nome, u.email, u.endereco, v.shitzu, v.golden, v.viralata, v.yorkshire, v.pastorAlemao, v.outro, v.naoTem, s.brinde 
+from usuario u
+	join votacao v on v.fkUsuario = u.idUsuario
+	join sorteio s on s.fkUsuario = u.idUsuario;
+		
+		
+   
+-- selects
 select * from usuario;
 select * from votacao;
 select * from sorteio;
+
