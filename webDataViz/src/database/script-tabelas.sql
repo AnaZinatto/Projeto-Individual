@@ -35,15 +35,43 @@ fkUsuario int,
 );
 
 -- select para saber as pssoas que votaram em determinados dogs
-select u.nome, u.email, u.endereco, v.shitzu, v.golden, v.viralata, v.yorkshire, v.pastorAlemao, v.outro, v.naoTem, s.brinde 
+select u.nome, 
+	u.email, 
+    u.endereco, 
+    v.shitzu, 
+    v.golden, 
+    v.viralata, 
+    v.yorkshire, 
+    v.pastorAlemao, 
+    v.outro, 
+    v.naoTem, 
+    s.brinde 
 from usuario u
 	join votacao v on v.fkUsuario = u.idUsuario
 	join sorteio s on s.fkUsuario = u.idUsuario;
 		
-		
+        
+select shitzu, 
+   golden, 
+    viralata, 
+    yorkshire, 
+    pastorAlemao, 
+    outro, 
+    naoTem from votacao;
+    
+    
+
+
+
+select 
+    SUM(shitzu + golden + viralata + yorkshire + pastorAlemao + outro) as 'Total Dogs'
+from votacao;
+
+select sum(naoTem) as 'Não tem cachorro'
+	from votacao;
+
    
 -- selects
 select * from usuario;
 select * from votacao;
 select * from sorteio;
-

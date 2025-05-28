@@ -18,7 +18,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var votacaoRouter = require("./src/routes/votacao")
 var sorteioRouter = require("./src/routes/sorteio");
-const { sorteio } = require("./src/models/sorteioModel");
+var dashboardRouter = require("./src/routes/dashboard")
 
 
 
@@ -32,6 +32,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/votacao", votacaoRouter)
 app.use("/sorteio", sorteioRouter)
+app.use("/dashboard", dashboardRouter)
 
 
 
