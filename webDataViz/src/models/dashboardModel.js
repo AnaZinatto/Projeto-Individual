@@ -81,7 +81,9 @@ function carregarGraficoDogs() {
         UNION
         SELECT 'Pastor Alemão', SUM(pastorAlemao) FROM votacao
         UNION
-        SELECT 'Outro', SUM(outro) FROM votacao;
+        SELECT 'Outro', SUM(outro) FROM votacao
+        UNION
+        SELECT 'Nenhum', SUM(naoTem) AS quantidade FROM votacao;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

@@ -2,7 +2,6 @@ create database DogsWorld;
 
 use DogsWorld;
 
--- Criando a tabela usuário
 create table usuario (
 idUsuario int primary key auto_increment,
 nome varchar (45),
@@ -11,8 +10,7 @@ senha varchar (45),
 endereco varchar (100)	
 );
 
--- criando a tabela votação
-create table votacao (
+    create table votacao (
 idVotacao int auto_increment,
 shitzu TINYINT,
 golden TINYINT,
