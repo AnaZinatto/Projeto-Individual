@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/style-heade.css">
+    <link rel="stylesheet" href="Style/quiz.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="Assests/icon/logo.png" alt="Imagem logo" height="90px">
+        <nav class="header_nav">
+            <ul>
+                <li><a href="#Inicio" style="color: aliceblue;">Início</a></li>
+                <li><a href="index.html/#Sobre"  style="color: aliceblue;">Sobre</a></li>
+                <a href="#Dogs"  style="color: aliceblue;">Dogs</a>
+                <li><a href="#SobreMim"  style="color: aliceblue;">Sobre mim</a></li>
+                <li><a href="#formulario"  style="color: aliceblue;">Formulário</a></li>
+                <li><a  style="color: aliceblue;" class="button-Cadastrar" id="login_a" href="./login.html">login</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="quiz-container">
+        <h1>Qual cachorro você seria?</h1>
+        <div class="quiz">
+            <h2 id="Question">Question goes here</h2>
+            <div class="alternativas-btn">
+                <button class="btn">Alterntiva 1</button>
+                <button class="btn">Alterntiva 2</button>
+                <button class="btn">Alterntiva 3</button>
+                <button class="btn">Alterntiva 4</button>
+            </div>
+            <button id="proximo-btn">Próximo</button>
+
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    var listaQuiz = [
+
+        {
+            questao: "O que mais gosta de fazer no tempo livre?",
+            alternativaA: "Sair com os amigos",
+            alternativaB: "Dormir",
+            alternativaC: "Praticar esportes",
+            alternativaD: "Comer e relaxar em casa",
+        },
+
+        {
+            questao: "Como você se descreveria?",
+            alternativaA: "Aventureiro e energético",
+            alternativaB: "Tranquilo e carinhoso",
+            alternativaC: "Leal e protetor",
+            alternativaD: "Engraçado e sociável",
+        },
+
+        {
+            questao: "Você prefere estar:",
+            alternativaA: "Com muitas pessoas",
+            alternativaB: "Com poucos amigos",
+            alternativaC: "Sozinho(a)",
+            alternativaD: "Com a família",
+        },
+
+        {
+            questao: "Escolha um petisco:",
+            alternativaA: "Hamburguer",
+            alternativaB: "Salada",
+            alternativaC: "Pizza",
+            alternativaD: "Sorvete",
+        },
+
+        {
+            questao: "Como você cuida da sua aparência?",
+            alternativaA: "Sempre arrumado(a) e elegante",
+            alternativaB: "Despojado(a) e básico(a)",
+            alternativaC: "Tanto faz, o que importa é estar confortável",
+            alternativaD: "Gosto de me destacar e ser diferente",
+        },
+
+        {
+            questao: "O que te irrita mais?",
+            alternativaA: "Ficar sozinho",
+            alternativaB: "Bagunça",
+            alternativaC: "Falta de atenção",
+            alternativaD: "Ter que esperar",
+        },
+
+        {
+            questao: "Em uma situação nova, você é:",
+            alternativaA: "Cauteloso(a), observa antes",
+            alternativaB: "Bagunça",
+            alternativaC: "Já chega fazendo amizades",
+            alternativaD: "Um pouco desconfiado, mas depois se solta",
+        },
+
+        {
+            questao: "Onde seria sua casa dos sonhos?",
+            alternativaA: "Uma fazenda, bem livre",
+            alternativaB: "Um apartamento aconchegante",
+            alternativaC: "Uma casa com quintal enorme",
+            alternativaD: "Uma casa na praia",
+        }
+
+    ]
+
+    var perguntaAtual = 0;
+
+    var questaoElemento = document.getElementById("Question");
+    var botoes = document.querySelectorAll(".btn");
+    var botaoProximo = document.getElementById("proximo-btn");
+
+    questaoElemento.innerHTML = listaQuiz[0].questao;
+    botoes[0].innerHTML = listaQuiz[0].alternativaA;
+    botoes[1].innerHTML = listaQuiz[0].alternativaB;
+    botoes[2].innerHTML = listaQuiz[0].alternativaC;
+    botoes[3].innerHTML = listaQuiz[0].alternativaD;
+
+    botaoProximo.addEventListener("click", function () {
+        perguntaAtual = perguntaAtual + 1;
+
+        if (perguntaAtual < listaQuiz.length) {
+            questaoElemento.innerHTML = listaQuiz[perguntaAtual].questao;
+            botoes[0].innerHTML = listaQuiz[perguntaAtual].alternativaA;
+            botoes[1].innerHTML = listaQuiz[perguntaAtual].alternativaB;
+            botoes[2].innerHTML = listaQuiz[perguntaAtual].alternativaC;
+            botoes[3].innerHTML = listaQuiz[perguntaAtual].alternativaD;
+        } else {
+            questaoElemento.innerHTML = "Quiz finalizado! Obrigado por participar!";
+            document.querySelector(".alternativas-btn").style.display = "none";
+            botaoProximo.style.display = "none";
+        }
+
+
+    });
+</script>
+
+
+</script>

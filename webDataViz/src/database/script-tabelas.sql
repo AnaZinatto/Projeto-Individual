@@ -70,6 +70,19 @@ from votacao;
 select sum(naoTem) as 'Não tem cachorro'
 	from votacao;
 
+ SELECT 'Shitzu' AS raca, SUM(shitzu) AS quantidade FROM votacao
+        UNION
+        SELECT 'Golden', SUM(golden) FROM votacao
+        UNION
+        SELECT 'Vira-lata', SUM(viralata) FROM votacao
+        UNION
+        SELECT 'Yorkshire', SUM(yorkshire) FROM votacao
+        UNION
+        SELECT 'Pastor Alemão', SUM(pastorAlemao) FROM votacao
+        UNION
+        SELECT 'Outro', SUM(outro) FROM votacao
+        UNION
+        SELECT 'Nenhum', SUM(naoTem) FROM votacao;
    
 -- selects
 select * from usuario;

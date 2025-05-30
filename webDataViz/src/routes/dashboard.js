@@ -3,7 +3,7 @@ var router = express.Router();
 
 var dashboardController = require("../controllers/dashboardController");
 
-router.get("//totalDogs", function (req, res) {
+router.get("/totalDogs", function (req, res) {
     dashboardController.obterTotalDogs(req, res);
 });
 
