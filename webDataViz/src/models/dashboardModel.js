@@ -83,12 +83,8 @@ function carregarGraficoDogs() {
         UNION
         SELECT 'Outro', SUM(outro) FROM votacao
         UNION
-<<<<<<< HEAD
         SELECT 'Nenhum', SUM(naoTem) FROM votacao;
 
-=======
-        SELECT 'Nenhum', SUM(naoTem) AS quantidade FROM votacao;
->>>>>>> 6731436e3becac9ab37566efa08a071797b75359
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
