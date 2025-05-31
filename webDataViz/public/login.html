@@ -40,17 +40,16 @@
 
   <script>
     function entrar() {
-      var email =input_email.value
-      var senha =input_senha.value
+      var email = input_email.value
+      var senha = input_senha.value
 
-      if (email === "" || senha === "") {
-        alert("Por favor, preencha todos os campos!");
+      if (!email.includes('@')) {
+        alert("O e-mail precisa conter '@'.");
         return;
       }
 
-      if (email.indexOf("@") === -1) {
-        alert("O e-mail precisa conter '@'.");
-        return;
+      if (senha.length < 6) {
+        alert('A senha precisa ter mai s de 6 digitos')
       }
 
       fetch("/usuarios/autenticar", {
@@ -73,6 +72,7 @@
           sessionStorage.NOME_USUARIO = json.nome;
           sessionStorage.ID_USUARIO = json.idUsuario;
 
+          alert(`Login efetuado com sucesso ${nome}`)
           window.location.href = "./formulário.html";
         })
         .catch(erro => {
@@ -82,4 +82,5 @@
     }
   </script>
 </body>
+
 </html>

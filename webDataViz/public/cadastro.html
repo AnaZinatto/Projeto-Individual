@@ -51,9 +51,13 @@ function cadastrar() {
     return;
   }
 
-  if (email.indexOf("@") === -1) {
+  if (!email.includes('@')) {
     alert("O e-mail precisa conter '@'.");
     return;
+  } 
+
+  if (senha.length < 6){
+    alert('A senha precisa ter mai s de 6 digitos')
   }
 
   fetch("/usuarios/cadastrar", {
@@ -68,7 +72,7 @@ function cadastrar() {
   })
     .then(resposta => {
       if (resposta.ok) {
-        alert("Cadastro efetuado com sucesso! Vamos fazer o login");
+        alert(`Cadastro efetuado com sucesso ${nome}! Vamos fazer o login`);
         window.location.href = "./login.html";
       } else {
         throw new Error("Erro ao tentar realizar o cadastro");

@@ -230,7 +230,7 @@ margin-top: 20px;
 }
 
 /* Formulario */
-
+/* 
 #formulario .container-formulario{
   display: flex;
   justify-content: center;
@@ -308,7 +308,111 @@ footer {
   background-color: #081F5C;
   margin-top: 150px;
   height: 150px;
-}  
+}   */
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.quiz-card{
+    background-color: #05004E;
+    margin-top: 120px;
+    height: 528px;
+    flex-direction: column;
+    width: 770px;
+}
+
+
+
+.quiz-card img{
+    margin-top: -150px;
+    width: 50%;
+    float: right;
+}
+
+.quiz-card h1{
+    color: #F7F5F0;
+    margin-top: 80px;
+}
+
+.quiz-card button{
+    background-color: #F7F5F0;
+    color: #05004E;
+    font-weight: 500;
+    width: 200px;
+    margin: 10px 0;
+    padding: 10px;
+    
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    margin-left: 280px;
+}
+
+.quiz-card  button:hover:not([disabled]){ 
+    background-color: #05004E;
+    color: #F7F5F0;
+}
+
+
+.formulario-card{
+    background-color: #F7F5F0;
+    margin-top: 120px;
+    height: 528px;
+    flex-direction: column;
+    width: 770px;
+    color: #05004E;
+    
+}
+
+.formulario-card img {
+  width: 270px;
+  float: right;
+  margin-top: 110px;
+}
+
+
+#formulario h1{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 130px;
+}
+
+#formulario .itulo{
+  color: #05004E;
+}
+
+
+
+.formulario-card button{
+    background-color: #05004E;
+    color: #F7F5F0;
+    font-weight: 500;
+    width: 200px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+        margin-left: 280px;
+
+}
+
+button:hover:not([disabled]){ 
+    background-color: #F7F5F0;
+    color: #05004E;
+}
+
 
 footer p{
   color: #fff;
@@ -316,6 +420,10 @@ footer p{
   justify-content: center;
   text-align: center;
   margin-top: 50px;
+  height: 100px;
+  background-color: #05004E;
 
 
 }
+
+
