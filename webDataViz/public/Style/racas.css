@@ -1,0 +1,83 @@
+body {
+    background-color: #05004E;
+}
+
+.container-conteudo {
+    background-color: #F7F5F0;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    padding: 30px;
+    border-radius: 20px;
+
+
+}
+
+.container-conteudo h2 {
+    color: #05004E;
+    display: flex;
+    margin-top: 20px;
+}
+
+.container-conteudo select {
+    width: 200px;
+    height: 40px;
+    border: none;
+    color: #05004E;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background-color: #F7F5F0;
+    border: 2px solid #05004E;
+
+}
+
+select:hover:not([disabled]) {
+    background-color: #05004E;
+    color: #F7F5F0;
+}
+
+
+button {
+    background-color: #05004E;
+    color: #F7F5F0;
+    font-weight: 500;
+    width: 150px;
+    border: none;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover:not([disabled]) {
+    background-color: #F7F5F0;
+    color: #05004E;
+    border: 3px solid #05004E;
+}
+
+#div_titulo {
+    color: #F7F5F0;
+}
+
+#div_imagem img {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.6s;
+
+
+}
+
+#div_imagem img:hover {
+    transform: scale(1.05);
+
+}
+
+#div_conteudo h3 {
+    color: #05004E;
+}

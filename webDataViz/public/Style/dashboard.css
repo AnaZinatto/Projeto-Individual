@@ -1,5 +1,15 @@
- h1 {
-     color: #0D349A;
+body {
+    background-color: #05004E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+
+h1 {
+     color: #F7F5F0;
      display: flex;
      justify-content: center;
  }
@@ -24,7 +34,7 @@
  }
 
  .grafico {
-     background-color: #081F5C;
+     background-color: #F7F5F0;
  }
 
 
@@ -44,12 +54,11 @@
 
 
 .indicadores {
-    background-color: #dee5f8;
+    background-color: #F7F5F0;
     color: #05004E;
     font-weight: bold;
     padding: 10px;
     margin-top: 20px;
-    border-radius: 100px;
     display: flex;
     justify-content: center;
     flex-direction: column;

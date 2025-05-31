@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/style-heade.css">
+    <link rel="stylesheet" href="Style/racas.css">
+    <title>Conheça as Raças</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="Assests/icon/logo.png" alt="Imagem logo" height="90px">
+        <nav class="header_nav">
+            <ul>
+                <li><a style="color: aliceblue;" href="./index.html">Início</a></li>
+                <li><a style="color: aliceblue;" href="#Sobre">Sobre</a></li>
+                <li><a style="color: aliceblue;" href="#Dogs">Dogs</a></li>
+                <li><a style="color: aliceblue;" href="#SobreMim">Sobre mim</a></li>
+                <li><a style="color: aliceblue;" href="#formulario">Formulário</a></li>
+                <li><a style="color: aliceblue;" class="button-Cadastrar" id="login_a" href="./login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container-conteudo">
+        <h2>Selecione o cachorro que você <br>quer conhecer!</h2>
+        <select name="" id="select_racas">
+            <option value="">Selecione uma raça</option>
+            <option value="Pastor-alemão">Pastor-alemão</option>
+            <option value="Buldogue">Buldogue</option>
+            <option value="Labrador-retriever">Labrador retriever</option>
+            <option value="Golden-retriever">Golden retriever</option>
+            <option value="Husky-siberiano">Husky siberiano</option>
+            <option value="Beagle">Beagle</option>
+            <option value="Poodle">Poodle</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Shih Tzu">Shih Tzu</option>
+            <option value="Welsh-corgi-pembroke">Welsh corgi pembroke</option>
+            <option value="Chow-chow">Chow-chow</option>
+           
+        </select>
+        <button onclick="conhecer()">Conhecer</button>
+
+
+
+        <div id="div_titulo"></div>
+        <div id="div_conteudo"></div>
+        <div id="div_imagem"></div>
+
+    </div>
+
+</body>
+
+<script>
+    var listaCachorros = {
+        "Pastor-alemão": "O pastor alemão é conhecido pela sua personalidade forte, sendo um cão extremamente leal, protetor e atencioso com a família. São animais inteligentes, obedientes e com grande capacidade de aprendizado, o que os torna ótimos cães de trabalho",
+        "Buldogue": "Os buldogues, em geral, são conhecidos por serem cães leais, carinhosos e sociáveis, especialmente com seus tutores e famílias. Apesar da aparência forte, são geralmente tranquilos, afetuosos e podem ser ótimos companheiros. ",
+        "Labrador-retriever": "Os labradores são conhecidos pela sua personalidade carinhosa, amigável e leal, o que os torna excelentes cães de família. São inteligentes, facilmente treináveis e muito apegados aos seus tutores.",
+        "Golden-retriever": "O Golden Retriever é conhecido pela sua personalidade amável, leal e sociável, sendo uma raça popular por ser excelente companhia para crianças e outros animais. ",
+        "Husky-siberiano": "Cão de trabalho, forte, energético e adora climas frios.",
+        "Beagle": "Curioso, amigável e ótimo farejador, muito brincalhão.",
+        "Poodle": "Muito inteligente, adora aprender truques e possui pelagem encaracolada.",
+        "Chihuahua": "Pequeno no tamanho, mas valente e muito apegado ao dono.",
+        "Shih Tzu": "Afetuoso, calmo e ótimo cão de companhia.",
+        "Welsh-corgi-pembroke": "Cão de patas curtas, muito esperto, brincalhão e sociável.",
+        "Chow-chow": "Independente, leal e reconhecido por sua língua azul.",
+        
+    }
+
+    function conhecer() {
+        var raca = select_racas.value
+        var descricao = listaCachorros[raca];
+        div_titulo.innerHTML = ""
+        div_conteudo.innerHTML = ""
+        div_imagem.innerHTML = ""
+
+        if (raca == "") {
+            div_titulo.innerHTML = "<p>Por favor, selecione uma raça.</p>";
+        }
+
+
+        else if (raca == "Pastor-alemão") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+            <h2>Principais características da personalidade</h2>
+            <h3>Lealdade</h3>
+            <p> O pastor alemão é extremamente fiel ao seu dono e família, estabelecendo um forte vínculo emocional. </p>
+            <h3>Proteção</h3>
+            <p>O instinto protetor é marcante, tornando-os ótimos cães de guarda e defesa, mas também com um cuidado carinhoso com as crianças e outros membros da família. </p>
+            <h3>Inteligência e obediência</h3>
+            <p>São cães muito inteligentes e fáceis de treinar, o que facilita o estabelecimento de regras e comandos. </p>`
+            div_imagem.innerHTML += `<img src="Assests/img/pastor.png" alt="">`
+        }
+
+        else if (raca == "Buldogue") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+            <h2>Principais características da personalidade</h2>
+            <h3>Lealdade e afeição</h3>
+            <p> São cães muito leais aos seus tutores e famílias, demonstrando um forte vínculo afetivo. </p>
+            <h3>Sociabilidade</h3>
+            <p>Geralmente se dão bem com outros animais e pessoas, sendo ideais para famílias com crianças.  </p>
+            <h3>Docilidade</h3>
+            <p>Apesar de terem um temperamento forte, são cães relativamente dóceis e fáceis de treinar.  </p>`
+            div_imagem.innerHTML += `<img src="Assests/img/buldog.png" alt="">`
+        }
+
+        else if (raca == "Labrador-retriever") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+            <h2>Principais características da personalidade</h2>
+            <h3>Carinhoso e amigável </h3>
+            <p>Os labradores são naturalmente gentis e amigáveis, tanto com pessoas como com outros animais.  </p>
+            <h3>Leal e apegado</h3>
+            <p>Eles são conhecidos por serem muito leais aos seus tutores e adoram estar próximos deles. </p>
+            <h3>Inteligente e treinável</h3>
+            <p>A sua inteligência e a sua facilidade para aprender tornam-nos cães fáceis de treinar e de ensinar.  </p>`
+            div_imagem.innerHTML += `<img src="Assests/img/labrador.png" alt="">`
+        }
+
+        else if (raca == "Golden-retriever") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+            <h2>Principais características da personalidade</h2>
+            <h3> Amável e afetuoso </h3>
+            <p>São cães que adoram estar próximos dos seus tutores e gostam de carinho.  </p>
+            <h3>Sociável</h3>
+            <p>Se dão bem com pessoas, crianças, outros animais e estranhos. </p>
+            <h3>Inteligente e fácil de treinar</h3>
+            <p>Apreendem rapidamente comandos e são motivados a agradar seus tutores.  </p>`
+            div_imagem.innerHTML += `<img src="Assests/img/golden.png" alt="">`
+        }
+
+
+        else if (raca == "Husky-siberiano") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`;
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+            <h2>Principais características da personalidade</h2>
+            <h3>Energia e vitalidade</h3>
+            <p>O Husky é extremamente ativo e precisa de bastante exercício físico diário.</p>
+            <h3>Independência</h3>
+            <p>Possuem uma personalidade mais independente, o que às vezes pode ser confundido com teimosia.</p>
+            <h3>Sociável e amigável</h3>
+            <p>Apesar do olhar selvagem, são muito amigáveis e costumam se dar bem com pessoas e outros animais.</p>`;
+            div_imagem.innerHTML += `<img src="Assests/img/husky.png" alt="">`;
+        }
+
+        else if (raca == "Beagle") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`;
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+            <h2>Principais características da personalidade</h2>
+            <h3>Curioso e aventureiro</h3>
+            <p>Adora explorar ambientes e seguir rastros.</p>
+            <h3>Brincalhão</h3>
+            <p>Excelente companhia para crianças devido à sua energia e alegria.</p>
+            <h3>Amigável</h3>
+            <p>Gosta muito de pessoas e dificilmente é agressivo.</p>`;
+            div_imagem.innerHTML += `<img src="Assests/img/beagle.png" alt="">`;
+        }
+
+
+
+        else if (raca == "Poodle") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`;
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+        <h2>Principais características da personalidade</h2>
+        <h3>Inteligente</h3>
+        <p>É uma das raças mais inteligentes do mundo, aprende comandos rapidamente.</p>
+        <h3>Brincalhão</h3>
+        <p>Adora interagir e brincar, principalmente com crianças.</p>
+        <h3>Leal</h3>
+        <p>É muito apegado à família e gosta de estar sempre por perto.</p>`;
+            div_imagem.innerHTML += `<img src="Assests/img/poodle.png" alt="">`;
+        }
+
+        else if (raca == "Chihuahua") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`;
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+        <h2>Principais características da personalidade</h2>
+        <h3>Corajoso</h3>
+        <p>Apesar do tamanho pequeno, possui uma personalidade destemida.</p>
+        <h3>Apegado</h3>
+        <p>Forma laços muito fortes com seus donos, sendo um cão de colo por excelência.</p>
+        <h3>Alerta</h3>
+        <p>Está sempre atento a tudo ao seu redor e costuma ser desconfiado com estranhos.</p>`;
+            div_imagem.innerHTML += `<img src="Assests/img/Chihuahua.png" alt="">`;
+        }
+
+        else if (raca == "Shih Tzu") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`;
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+        <h2>Principais características da personalidade</h2>
+        <h3>Afetuoso</h3>
+        <p>Adora estar junto dos donos, sendo muito carinhoso.</p>
+        <h3>Calmo</h3>
+        <p>Possui uma natureza tranquila, ideal para apartamentos.</p>
+        <h3>Amigável</h3>
+        <p>Se dá bem com crianças e outros animais.</p>`;
+            div_imagem.innerHTML += `<img src="Assests/img/shihtzu.png" alt="">`;
+        }
+
+     
+        else if (raca == "Welsh-corgi-pembroke") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`;
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+        <h2>Principais características da personalidade</h2>
+        <h3>Brincalhão</h3>
+        <p>Adora se divertir e interagir com pessoas e animais.</p>
+        <h3>Inteligente</h3>
+        <p>Aprende comandos rapidamente e gosta de desafios mentais.</p>
+        <h3>Sociável</h3>
+        <p>Gosta de companhia e é muito afetuoso.</p>`;
+            div_imagem.innerHTML += `<img src="Assests/img/corgi.png" alt="">`;
+        }
+
+        else if (raca == "Chow-chow") {
+            div_titulo.innerHTML = `<h2>${raca}</h2>`;
+            div_conteudo.innerHTML += `<p>${descricao}</p><br>
+        <h2>Principais características da personalidade</h2>
+        <h3>Independente</h3>
+        <p>Costuma ser mais reservado e não tão dependente dos donos.</p>
+        <h3>Leal</h3>
+        <p>É muito fiel à sua família.</p>
+        <h3>Observador</h3>
+        <p>Está sempre atento ao que acontece ao seu redor.</p>`;
+            div_imagem.innerHTML += `<img src="Assests/img/chowchow.png" alt="">`;
+        }
+
+     
+    }
+
+</script>
+
+</html>

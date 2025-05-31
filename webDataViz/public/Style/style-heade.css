@@ -31,23 +31,35 @@ header {
 .header_nav a {
     text-decoration: none;
     font-weight: 500;
-    color: #334EAC;
+    color: #081F5C;
     font-weight: 600;
+        transition: all 0.3s;
+
+}
+
+.header_nav a:hover:not([disabled]) {
+    color: #334EAC;
 }
 
 #login_a {
     color: #FFFFFF;
 }
 
-.button-Login, .button-Cadastrar{
+.button-Cadastrar{
     background-color: #081F5C;
     border: none;
     cursor: pointer;
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 13px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 
 }
+
+
+
+
+
+
 
 
 
