@@ -11,13 +11,6 @@ router.get("/naoTemDogs", function (req, res) {
     dashboardController.obterNaoTemDogs(req, res);
 });
 
-// // router.get("/dashboard/MaisTem", function (req, res) {
-// //     dashboardController.obterMaisTem(req, res);
-// // });
-
-// // router.get("/dashboard/MenosTem", function (req, res) {
-// //     dashboardController.obterMenosTem(req, res);
-// // });
 
 router.get("/graficoDogs", function (req, res) {
     dashboardController.carregarGraficoDogs(req, res);

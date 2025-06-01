@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/png" href="./Assests/icon/logo.png">
     <link rel="stylesheet" href="Style/style-heade.css">
     <link rel="stylesheet" href="Style/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -36,14 +37,7 @@
                 <h3>Não tem cachorro</h3>
                 <p id="nao_tem_cachorro"></p>
             </div>
-            <!-- <div class="card">
-                <h3>O cachorro que as pessoas mais têm é:</h3>
-                <p id="mais_tem"></p>
-            </div>
-            <div class="card">
-                <h3>O cachorro que as pessoas menos têm é:</h3>
-                <p id="menos_tem"></p>
-            </div> -->
+
         </div>
     </div>
 
@@ -59,15 +53,14 @@
         function carregarDadosDashboard() {
             obterTotalDogs();
             obterNaoTemDogs();
-            // obterMaisTem();
-            // obterMenosTem();
+           
         }
 
         function obterTotalDogs() {
             fetch('/dashboard/totalDogs')
                 .then(res => res.json())
                 .then(resposta => {
-                    document.getElementById('tem_cachorro').innerText = resposta[0]['Total_de_dogs'];
+                    document.getElementById('tem_cachorro').innerText = resposta[0].total_dogs;
                 })
                 .catch(err => console.error("Erro no total de dogs:", err));
         }
@@ -81,23 +74,6 @@
                 .catch(err => console.error("Erro no não tem dogs:", err));
         }
 
-        // function obterMaisTem() {
-        //     fetch('/dashboard/MaisTem')
-        //         .then(res => res.json())
-        //         .then(resposta => {
-        //             document.getElementById('mais_tem').innerText = resposta[0].obj;
-        //         })
-        //         .catch(err => console.error("Erro no mais tem:", err));
-        // }
-
-        // function obterMenosTem() {
-        //     fetch('/dashboard/MenosTem')
-        //         .then(res => res.json())
-        //         .then(resposta => {
-        //             document.getElementById('menos_tem').innerText = resposta[0].obj;
-        //         })
-        //         .catch(err => console.error("Erro no menos tem:", err));
-        // }
 
     function carregarGraficoDogs() {
     fetch('/dashboard/graficoDogs')

@@ -22,68 +22,22 @@ function obterNaoTemDogs() {
     return database.executar(instrucao);
 }
 
-// // Cachorro que mais tem (raça com maior soma)
-// function obterMaisTem() {
-//     var instrucao = `
-//         SELECT raca, quantidade FROM (
-//             SELECT 'Shitzu' AS raca, SUM(shitzu) AS quantidade FROM votacao
-//             UNION
-//             SELECT 'Golden', SUM(golden) FROM votacao
-//             UNION
-//             SELECT 'Vira-lata', SUM(viralata) FROM votacao
-//             UNION
-//             SELECT 'Yorkshire', SUM(yorkshire) FROM votacao
-//             UNION
-//             SELECT 'Pastor Alemão', SUM(pastorAlemao) FROM votacao
-//             UNION
-//             SELECT 'Outro', SUM(outro) FROM votacao
-//         ) AS dados
-//         ORDER BY quantidade DESC
-//         LIMIT 1;
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucao);
-//     return database.executar(instrucao);
-// }
-
-// // Cachorro que menos tem (raça com menor soma)
-// function obterMenosTem() {
-//     var instrucao = `
-//         SELECT raca, quantidade FROM (
-//             SELECT 'Shitzu' AS raca, SUM(shitzu) AS quantidade FROM votacao
-//             UNION
-//             SELECT 'Golden', SUM(golden) FROM votacao
-//             UNION
-//             SELECT 'Vira-lata', SUM(viralata) FROM votacao
-//             UNION
-//             SELECT 'Yorkshire', SUM(yorkshire) FROM votacao
-//             UNION
-//             SELECT 'Pastor Alemão', SUM(pastorAlemao) FROM votacao
-//             UNION
-//             SELECT 'Outro', SUM(outro) FROM votacao
-//         ) AS dados
-//         ORDER BY quantidade ASC
-//         LIMIT 1;
-//     `;
-//     console.log("Executando a instrução SQL: \n" + instrucao);
-//     return database.executar(instrucao);
-// }
-
 // Dados para gráfico com soma de cada raça
 function carregarGraficoDogs() {
     var instrucao = `
-        SELECT 'Shitzu' AS raca, SUM(shitzu) AS quantidade FROM votacao
-        UNION
-        SELECT 'Golden', SUM(golden) FROM votacao
-        UNION
-        SELECT 'Vira-lata', SUM(viralata) FROM votacao
-        UNION
-        SELECT 'Yorkshire', SUM(yorkshire) FROM votacao
-        UNION
-        SELECT 'Pastor Alemão', SUM(pastorAlemao) FROM votacao
-        UNION
-        SELECT 'Outro', SUM(outro) FROM votacao
-        UNION
-        SELECT 'Nenhum', SUM(naoTem) FROM votacao;
+        select 'Shitzu' AS raca, SUM(shitzu) AS quantidade FROM votacao
+        union
+        select 'Golden', SUM(golden) FROM votacao
+        union
+        select 'Vira-lata', SUM(viralata) FROM votacao
+        union
+        select 'Yorkshire', SUM(yorkshire) FROM votacao
+        union
+        select 'Pastor Alemão', SUM(pastorAlemao) FROM votacao
+        union
+        select 'Outro', SUM(outro) FROM votacao
+        union
+        select 'Nenhum', SUM(naoTem) FROM votacao;
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
